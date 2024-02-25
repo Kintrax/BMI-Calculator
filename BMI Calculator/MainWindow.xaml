@@ -1,0 +1,150 @@
+﻿<Window x:Class="BMI_Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BMI_Calculator"
+        mc:Ignorable="d"
+        Title="" Height="440" Width="447"
+        ResizeMode="NoResize"
+        >
+
+
+    <Window.Resources>
+
+        <Style TargetType="Button" x:Key="RoundButton">
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="DemiBold" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+
+                        <Border x:Name="border" CornerRadius="5" Background="#c2beb2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#8f8c83" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+
+    <Grid Background="#50bfab">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="110"/>
+        </Grid.RowDefinitions>
+
+        <!-- Benutzerdefinierte Titelleiste -->
+        <Border
+            Grid.Row="0"
+            x:Name="AppTitleBar"
+            Background="#50bfab"
+            Height="32"
+            VerticalAlignment="Top"
+            MouseLeftButtonDown="AppTitleBar_MouseLeftButtonDown">
+            <Button 
+                Content="X"
+                Click="FensterSchließenButton_Gegklickt"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Margin="0,0,10,0"
+                Background="Transparent"
+                Foreground="#1f302c"
+                FontSize="15"
+                FontFamily="Corbel"
+                BorderThickness="0"
+                
+                />
+            
+        </Border>
+
+        <!--Label zur Anzeige des BMI Wertes-->
+        <Label x:Name="BMILabel" Content="32,9" Grid.Row="1" FontSize="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial" Foreground="#f2f2f2" />
+
+        
+        <!--Row mit den Buttons zur Gewichtseingabe-->
+        <Border Grid.Row="2" Margin="15" Background="#f2f2f2" CornerRadius="5">
+            
+            <StackPanel Orientation="Horizontal">
+                <Button Click="GewichtBestimmen" x:Name="MinusGroß" Width="70" Height="55" Content="-" Style="{StaticResource RoundButton}" />
+                <Button Click="GewichtBestimmen" x:Name="MinusKlein" Width="35" Height="35" Content="-" Style="{StaticResource RoundButton}" />
+                <Label
+                    x:Name="eingestelltesGewicht"
+                    Width="72"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="Arial"
+                    FontSize="25"
+                    Content="82,6"
+                    Margin="8.5, 8.5, 0, 8.5"
+                    />
+                <Label Content="Kg" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial" FontSize="25" Margin="-5, 0, 8.5, 0" />
+                <Button Click="GewichtBestimmen" x:Name="PlusKlein" Width="35" Height="35" Content="+"  Style="{StaticResource RoundButton}" />
+                <Button Click="GewichtBestimmen" x:Name="PlusGroß" Width="70" Height="55" Content="+"  Style="{StaticResource RoundButton}" />
+            </StackPanel>
+            
+        </Border>
+
+        
+        <!--Row mit dem Slider zur Eingabe der Körpergröße-->
+        <Border Grid.Row="3" Margin="15" Background="#f2f2f2" CornerRadius="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Slider
+                    x:Name="slider"
+                    ValueChanged="SliderValueChanged"
+                    Grid.Column="0"
+                    Value="170"
+                    Maximum="220"
+                    Minimum="150"
+                    Margin="10"
+                    VerticalAlignment="Center"
+                    IsSnapToTickEnabled="True"
+                    />
+                <Label
+                    Grid.Column="1"
+                    x:Name="labelGroeße"
+                    Margin="0,0,-5,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="Arial"
+                    FontSize="25"
+                    FontStretch="Medium"
+                    Content="{Binding ElementName=slider, Path=Value}"
+                />
+                <Label
+                    Grid.Column="2"
+                    Content="cm"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="Arial"
+                    FontSize="25"
+                    Margin="0,0,5,0"
+                />
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>
