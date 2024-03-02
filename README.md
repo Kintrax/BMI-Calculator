@@ -16,4 +16,9 @@ Die App wurde mithilfe von C# und XAML entwickelt. Die Benutzeroberfläche wurde
 2. Öffnen Sie die `BMI_Calculator.sln`-Datei in Visual Studio.
 3. Kompilieren Sie das Projekt und führen Sie die Anwendung aus.
 
-
+### Installation mittels Setup Datei
+1. Klicken Sie auf der rechten Seite auf das aktuelle Release.
+2. Laden Sie das BMI-Calulator.zip herunter.
+3. Entpacken Sie die .zip Datei und installieren sie die Software mit einem Klick auf die setup.exe
+4. Nach der Installation wird dem Starmenü eine Verknüpfung hinzugefügt.
+5. Die runtergeladenen Installationsdateien können nach der Installation gelöscht werden.
