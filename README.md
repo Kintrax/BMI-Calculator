@@ -1,4 +1,5 @@
 # BMI Calculator
+![beispiel](https://github.com/Kintrax/BMI-Calculator/assets/144847405/071b66fd-fe92-4212-9af5-a48233df0c80)
 
 Der BMI-Calculator ist eine einfache Anwendung, die es Benutzern ermöglicht, ihren Body-Mass-Index (BMI) zu berechnen, indem sie ihr Gewicht und ihre Größe eingeben. Die App wurde mit C# und XAML entwickelt und bietet eine intuitive Benutzeroberfläche für eine schnelle und genaue BMI-Berechnung.
 
